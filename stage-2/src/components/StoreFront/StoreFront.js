@@ -3,8 +3,8 @@ import axios from 'axios';
 import './StoreFront.css';
 
 class StoreFront extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             products: []
@@ -21,6 +21,7 @@ class StoreFront extends Component {
     }
 
     render() {
+       console.log(this.props); 
         let productDisplay = this.state.products.map((element, index) => {
             return (
                 <div className="product-container" key={index}>
@@ -30,7 +31,7 @@ class StoreFront extends Component {
                     <h3>{"$" + element.price + ".00"}</h3>
                     <button onClick={() => this.props.addToShoppingCart(element)}>Purchase!</button>
                 </div>
-            )
+            ) 
         })
         return (
             <div className="storefront-container">
